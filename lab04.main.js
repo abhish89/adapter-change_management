@@ -2,7 +2,8 @@
 const options = {
   url: 'https://dev78241.service-now.com/',
   username: 'admin',
-  password: 'Kittu@123'
+  password: 'Kittu@123',
+  serviceNowTable: 'change_request'
 };
 // Import built-in Node.js package path.
 const path = require('path');
