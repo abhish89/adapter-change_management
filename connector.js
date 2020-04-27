@@ -173,13 +173,23 @@ sendRequest(callOptions, callback) {
     uri = this.constructUri(callOptions.serviceNowTable, callOptions.query);
   else
     uri = this.constructUri(callOptions.serviceNowTable);
+
   /**
    * You must build the requestOptions object.
    * This is not a simple copy/paste of the requestOptions object
    * from the previous lab. There should be no
    * hardcoded values.
    */
-  const requestOptions = {};
+  
+   const requestOptions = {
+    method:callOptions.method,
+    auth: {
+      user: this.options.username,
+      pass: this.options.password,
+    },
+    baseUrl: this.options.url,
+    uri: uri,
+  };
   request(requestOptions, (error, response, body) => {
     this.processRequestResults(error, response, body, (processedResults, processedError) => callback(processedResults, processedError));
   });
